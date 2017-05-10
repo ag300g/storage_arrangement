@@ -1,0 +1,13 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+.Ruserdata
+src/*.o
+src/*.so
+src/*.dll
+src-i386
+src-x64
+examples
+model
+*.bak
