@@ -1,5 +1,5 @@
-data1 <- read.table("../data/kl_sku_sku_6_0401",sep = "\t",fileEncoding="utf-8",comment.char = "")
-data2 <- read.table("../data/kl_sku_store_6_0401",sep = "\t",fileEncoding="utf-8",comment.char = "")
+data1 <- read.table("./data/kl_sku_sku_6_0401",sep = "\t",fileEncoding="utf-8",comment.char = "")
+data2 <- read.table("./data/kl_sku_store_6_0401",sep = "\t",fileEncoding="utf-8",comment.char = "")
 
 library(splitstackshape)
 sku_sku <- as.data.frame(cSplit(data1, "V1", "#"))
@@ -26,19 +26,21 @@ which.max(w_store)
 which.max(p_scale)
 # choose the NO.37 store as the target store
 # choose the NO.67 store as the test store
-save(sku_sku,file="../data/sku_sku.RData")
-save(sku_store,file="../data/sku_store.RData")
+save(sku_sku,file="./data/sku_sku.RData")
+save(sku_store,file="./data/sku_store.RData")
 storelist <- list()
 storelist[[1]] <- store
 storelist[[2]] <- p_scale
 storelist[[3]] <- w_store
 names(storelist) <- c("name","sku_NUM","weight")
-save(storelist,file="../data/storelist.RData")
+save(storelist,file="./data/storelist.RData")
 
 ###########################################################################
 ################################## 数据预处理 #############################
 ###########################################################################
 ## 选取67号仓库进行计算, M表示这个仓库关联的sku之间关系(mii表示自己和仓库的关系)
+load("./data/storelist.RData")
+
 NO_store <- 67
 NO_store <- 157
 sku <- sku_store[sku_store$V1_2==NO_store,"V1_1"]
@@ -94,11 +96,11 @@ ar <- c(h1l_ar,h1r_ar,h2l_ar,h2r_ar,rep(1,n_nodes))
 ia <- c(h1l_ia,h1r_ia,h2l_ia,h2r_ia,rep(3*n_edges+1,n_nodes))
 ja <- c(h1l_ja,h1r_ja,h2l_ja,h2r_ja,1:n_nodes)
 
-save(n_nodes,file = "../data/n_nodes.RData")
-save(n_edges,file = "../data/n_edges.RData")
-save(ar,file = "../data/ar.RData")
-save(ia,file = "../data/ia.RData")
-save(ja,file = "../data/ja.RData")
-save(c,file = "../data/c.RData")
-save(ne,file = "../data/ne.RData")
+save(n_nodes,file = "./data/n_nodes.RData")
+save(n_edges,file = "./data/n_edges.RData")
+save(ar,file = "./data/ar.RData")
+save(ia,file = "./data/ia.RData")
+save(ja,file = "./data/ja.RData")
+save(c,file = "./data/c.RData")
+save(ne,file = "./data/ne.RData")
 
