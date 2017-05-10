@@ -35,11 +35,33 @@ storelist[[3]] <- w_store
 names(storelist) <- c("name","sku_NUM","weight")
 save(storelist,file="./data/storelist.RData")
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ###########################################################################
 ################################## 数据预处理 #############################
 ###########################################################################
 ## 选取67号仓库进行计算, M表示这个仓库关联的sku之间关系(mii表示自己和仓库的关系)
 load("./data/storelist.RData")
+load("./data/sku_sku.RData")
+load("./data/sku_store.RData")
 
 NO_store <- 67
 NO_store <- 157
