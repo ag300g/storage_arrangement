@@ -50,5 +50,7 @@ Data_Process <- function(sku_sku,sku_store,NO_store){
   ia <- c(h1l_ia,h1r_ia,h2l_ia,h2r_ia,rep(3*n_edges+1,n_nodes))
   ja <- c(h1l_ja,h1r_ja,h2l_ja,h2r_ja,1:n_nodes)
   
-  return(list(n_edges=n_edges,n_nodes=n_nodes,ne=ne,ar=ar,ia=ia,ja=ja,c=c))
+  p1 <- list(n_edges=n_edges,n_nodes=n_nodes,ne=ne,ar=ar,ia=ia,ja=ja,c=c)
+  p2 <- list(little_sku_sku=little_sku_sku,sku_non_isolated=sku_non_isolated)
+  return(p1=p1,p2=p2)
 }

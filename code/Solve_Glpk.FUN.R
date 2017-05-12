@@ -1,3 +1,7 @@
+#' @description  solve the ILP subproblem using glpkAPI package
+#' @param p1 the param used in glpk
+#' @param p2 the corresponding sku name and network
+#' @return chosen_sku: sku name which choosed  
 Solve_Glpk <- function(p1,p2,NO_store){
   # load package
   library(glpkAPI)

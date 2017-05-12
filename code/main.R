@@ -7,4 +7,4 @@ source(file="code/Data_Process.FUN.R",encoding="utf-8")
 storelist
 NO_store <- 157
 
-a <- Data_Process(sku_sku,sku_store,NO_store)
+p1 <- Data_Process(sku_sku,sku_store,NO_store)
