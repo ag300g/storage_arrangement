@@ -1,15 +1,17 @@
-Solve_Glpk <- function(p1,p2){
+Solve_Glpk <- function(p1,p2,NO_store){
   # load package
   library(glpkAPI)
   # preparing the model
   # data prepared: n_nodess,n_edges,ne,ar,ia,ja,c
-  load("../data/n_nodes.RData")
-  load("../data/n_edges.RData")
-  load("../data/ar.RData")
-  load("../data/ia.RData")
-  load("../data/ja.RData")
-  load("../data/c.RData")
   load("../data/ne.RData")
+  n_nodes <- p1$n_nodes
+  n_edges <- p1$n_edges
+  ne <- p1$ne
+  ar <- p1$ar
+  ia <- p1$ia
+  ja <- p1$ja
+  c <- p1$c
+  
   lp <- initProbGLPK()
   # direction of optimization
   setObjDirGLPK(lp, GLP_MAX)
@@ -49,7 +51,7 @@ Solve_Glpk <- function(p1,p2){
   result[[2]] <- mipColsValGLPK(lp)
   result[[3]] <- mipObjValGLPK(lp)
   names(result) <- c("status","optimal_solution","optimal_value")
+  
   save(result,file="../data/reslut_67.RData")
   delProbGLPK(lp)
-  # delProbGLPK(lp)
 }
