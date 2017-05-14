@@ -58,5 +58,7 @@ Solve_Glpk <- function(p1,p2,NO_store){
   names(result) <- c("status","optimal_solution","optimal_value")
   
   save(result,file="../data/reslut_67.RData")
+  
+  
   delProbGLPK(lp)
 }
