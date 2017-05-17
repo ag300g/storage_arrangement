@@ -42,7 +42,6 @@ Solve_Glpk <- function(p1,p2,NO_store){
   # load constraint matrix
   loadMatrixGLPK(lp, ne, ia, ja, ar)
   
-  # setSimplexParmGLPK(MSG_LEV, GLP_ON)
   # solve lp problem
   # setMIPParmGLPK(GLP_RF_CLQ, GLP_ON)
   setMIPParmGLPK(MSG_LEV, GLP_MSG_ON)
@@ -51,14 +50,21 @@ Solve_Glpk <- function(p1,p2,NO_store){
   system.time(solveMIPGLPK(lp))
   
   # retrieve the results
-  result <- list()
-  result[[1]] <- mipStatusGLPK(lp)
-  result[[2]] <- mipColsValGLPK(lp)
-  result[[3]] <- mipObjValGLPK(lp)
-  names(result) <- c("status","optimal_solution","optimal_value")
-  
-  save(result,file="../data/reslut_67.RData")
-  
-  
+  # result <- list()
+  # result[[1]] <- mipStatusGLPK(lp)
+  # result[[2]] <- mipColsValGLPK(lp)
+  # result[[3]] <- mipObjValGLPK(lp)
+  # names(result) <- c("status","optimal_solution","optimal_value")
+  # save(result,file="../data/reslut_67.RData")
+  if(mipStatusGLPK(lp)==5){
+    opt <- mipObjValGLPK(lp)
+    opt_seperate <- c[mipColsValGLPK(lp)]
+    sku_select  <- p2$sku_non_isolated[as.logical(mipColsValGLPK(lp)[1:n_nodes])]
+    edge_select <- p2$little_sku_sku[as.logical(mipColsValGLPK(lp)[n_nodes+1:n_edges]),]
+    return(list(opt=opt,node_select=node_select,edge_select=edge_select))
+  }
+  else{
+    return(0)
+  }
   delProbGLPK(lp)
 }

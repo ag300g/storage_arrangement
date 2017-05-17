@@ -51,6 +51,6 @@ Data_Process <- function(sku_sku,sku_store,NO_store){
   ja <- c(h1l_ja,h1r_ja,h2l_ja,h2r_ja,1:n_nodes)
   
   p1 <- list(n_edges=n_edges,n_nodes=n_nodes,ne=ne,ar=ar,ia=ia,ja=ja,c=c)
-  p2 <- list(little_sku_sku=little_sku_sku,sku_non_isolated=sku_non_isolated)
+  p2 <- list(little_sku_sku=little_sku_sku,sku_non_isolated=sku_non_isolated,sku=sku,w_sku=w_sku)
   return(list(p1=p1,p2=p2))
 }

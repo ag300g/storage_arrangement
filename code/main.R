@@ -8,7 +8,4 @@ storelist
 NO_store <- 157
 
 p <- Data_Process(sku_sku,sku_store,NO_store)
-r <- Solve_Glpk(p[[1]],p[[2]],NO_store)
-
-p1 <- Data_Process(sku_sku,sku_store,NO_store)
-
+glpkresult <- Solve_Glpk(p$p1,p$p2,NO_store)
