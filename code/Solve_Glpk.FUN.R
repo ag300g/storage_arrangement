@@ -61,7 +61,7 @@ Solve_Glpk <- function(p1,p2,NO_store){
     opt_seperate <- c[mipColsValGLPK(lp)]
     sku_select  <- p2$sku_non_isolated[as.logical(mipColsValGLPK(lp)[1:n_nodes])]
     edge_select <- p2$little_sku_sku[as.logical(mipColsValGLPK(lp)[n_nodes+1:n_edges]),]
-    return(list(opt=opt,node_select=node_select,edge_select=edge_select))
+    return(list(opt=opt,opt_seperate=opt_seperate,node_select=node_select,edge_select=edge_select))
   }
   else{
     return(0)
