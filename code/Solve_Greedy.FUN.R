@@ -3,4 +3,10 @@
 #' @param NO_store the store number
 Solve_Greedy <- function(little_sku_sku,sotrelist){
   
+  
+  
+  
+  
+  
+  
 }
