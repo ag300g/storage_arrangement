@@ -3,7 +3,7 @@
 #' @param p2 the corresponding sku name and network
 #' @param NO_store the store number
 #' @return chosen_sku: sku name which choosed  
-Solve_Glpk <- function(p1,p2,NO_store){
+Solve_Glpk <- function(p1,p2){
   # load package
   library(glpkAPI)
   # preparing the model
@@ -57,7 +57,7 @@ Solve_Glpk <- function(p1,p2,NO_store){
   # save(result,file="../data/reslut_67.RData")
   if(mipStatusGLPK(lp)==5){
     opt <- mipObjValGLPK(lp)
-    opt_seperate <- c[mipColsValGLPK(lp)]
+    opt_seperate <- c[as.logical(mipColsValGLPK(lp))]
     sku_select  <- p2$sku_non_isolated[as.logical(mipColsValGLPK(lp)[1:n_nodes])]
     edge_select <- p2$little_sku_sku[as.logical(mipColsValGLPK(lp)[n_nodes+1:n_edges]),]
     return(list(opt=opt,opt_seperate=opt_seperate,sku_select=sku_select,edge_select=edge_select))
