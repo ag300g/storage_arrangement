@@ -7,7 +7,7 @@ source(file="code/Solve_Glpk.FUN.R",encoding="utf-8")
 source(file="code/Solve_Greedy.FUN.R",encoding="utf-8")
 
 storelist
-store <- storelist$name[storelist$sku_NUM > 50 & storelist$sku_NUM < 1000]
+store <- storelist$name[storelist$sku_NUM > 50 & storelist$sku_NUM < 300]
 
 comp <- list()
 for (i in 1:length(store))
