@@ -3,8 +3,8 @@
 #' @param NO_store the store number
 Solve_Greedy <- function(p2){
   little_sku_sku <- p2$little_sku_sku
-  w_sku <- p$p2$w_sku
-  sku <- p$p2$sku
+  w_sku <- p2$w_sku
+  sku <- p2$sku
   edge_select <- little_sku_sku[which.max(little_sku_sku$V3),,drop=FALSE]
   sku_order <- order(little_sku_sku[which.max(little_sku_sku$V3),c(2,3),drop=FALSE])
   sku_select <- little_sku_sku[which.max(little_sku_sku$V3),c(2,3),drop=FALSE][sku_order]
